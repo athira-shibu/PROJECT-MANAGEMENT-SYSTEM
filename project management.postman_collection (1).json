@@ -432,6 +432,71 @@
 							"body": "{\r\n   \"token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L2FwaS9sb2dpbiIsImlhdCI6MTc0MDgzNDU0MiwiZXhwIjoxNzQwODM4MTyLCJuYmYiOjE3NDA4MzQ1NDIsImp0aSI6IlZjSlliQmcyQmxtbVE5WkEiLCJzdWIiOiIxIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmN.II0m9ops_HddgJAoqo_jimSlHp4vxCydJUuZkVgXMzE\"\r\n}"
 						}
 					]
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "api/logout",
+							"host": [
+								"api"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "task reports",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "api/reports/{userId}",
+							"host": [
+								"api"
+							],
+							"path": [
+								"reports",
+								"{userId}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "task reports",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "api/reports/{userId}",
+									"host": [
+										"api"
+									],
+									"path": [
+										"reports",
+										"{userId}"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "[\r\n   {\r\n      \"id\":1,\r\n      \"name\":\"task one\",\r\n      \"user\":{\r\n         \"id\":1,\r\n         \"name\":\"miya\",\r\n         \"email\":\"usernew@test.com\",\r\n         \"email_verified_at\":null,\r\n         \"created_at\":\"2025-03-01T14:12:11.000000Z\",\r\n         \"updated_at\":\"2025-03-01T14:12:11.000000Z\"\r\n      }\r\n   }\r\n]"
+						}
+					]
 				}
 			]
 		}
