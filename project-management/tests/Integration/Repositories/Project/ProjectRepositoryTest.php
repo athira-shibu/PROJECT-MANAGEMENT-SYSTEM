@@ -106,7 +106,10 @@ class ProjectRepositoryTest extends TestCase
 
     public function testGetReportIsSuccessful(): void
     {
-        $user = $this->createUser();
+        $user = $this->createUser(
+            'miya',
+            'usernew@test.com'
+        );
 
         $project1 = $this->createProject();
         $task =$this->createTask(
@@ -120,7 +123,7 @@ class ProjectRepositoryTest extends TestCase
         $repository = new ProjectRepository();
 
         $result = $repository->getReports($project1);
-dd($result);
+        
         $this->assertNotEmpty($result);
     }
 }

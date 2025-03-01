@@ -55,20 +55,20 @@ final class ProjectRepository implements ProjectRepositoryInterface
     public function getReports(Project $project): Project
     {
         return (new Project())
-            ->select('projects.*')
-            ->join(
+            ->select('projects.*','tasks.*', 'task_remarks.*')
+            ->leftJoin(
                 'tasks',
                 'tasks.project_id',
                 '=',
                 'projects.id'
             )
-            ->join(
+            ->leftJoin(
                 'task_remarks',
                 'task_remarks.task_id',
                 '=',
                 'tasks.id'
             )
-            ->where('projects.id', '=', 'tasks.project_id')
+            ->where('projects.id', '=', $project->id)
             ->first();
     }
 }

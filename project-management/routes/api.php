@@ -8,6 +8,7 @@ use App\Http\Controllers\Project\ProjectDeleteController;
 use App\Http\Controllers\Project\ProjectUpdateController;
 use App\Http\Controllers\Task\TaskCreateController;
 use App\Http\Controllers\Task\TaskUpdateController;
+use App\Http\Controllers\User\TaskReportController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -44,4 +45,7 @@ Route::put('/tasks/{id}', [TaskUpdateController::class, 'update']);
 
 Route::post('/register', [RegisterController::class, 'register']);
 Route::post('/login', [LoginController::class, 'login']);
+
+Route::get('/reports/{userId}', [TaskReportController::class, 'get']);
+
 

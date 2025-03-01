@@ -66,7 +66,7 @@ trait ModelFactoryTrait
     public function createTaskRemarks(
         ?Task $task = null,
         ?TaskTypeEnum $status = null,
-        ?DateTime $data = null,
+        ?DateTime $date = null,
         ?string $remarks = null
     ): TaskRemarks {
         $task = $task !== null ? $task : $this->createTask();
@@ -76,6 +76,8 @@ trait ModelFactoryTrait
         $taskRemarks->setAttribute('status', $status ?? 'pending');
         $taskRemarks->setAttribute('remarks', $remarks ?? 'no remarks');
         $taskRemarks->setAttribute('date', '12/09/23');
+
+        $taskRemarks->task()->associate($task);
 
         $taskRemarks->save();
 

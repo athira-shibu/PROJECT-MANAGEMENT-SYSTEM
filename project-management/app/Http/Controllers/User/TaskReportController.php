@@ -12,6 +12,7 @@ use App\Repositories\Interfaces\Project\ProjectRepositoryInterface;
 use App\Repositories\Interfaces\User\UserRepositoryInterface;
 use Illuminate\Support\Collection;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 class TaskReportController extends Controller
 {
@@ -29,7 +30,7 @@ class TaskReportController extends Controller
 
     public function get(int $userId): JsonResponse
     {
-        $reports = new Collection();
+        $TotalReports = new Collection();
         
         $user = $this->userRepository->findById($userId);
 
@@ -38,12 +39,13 @@ class TaskReportController extends Controller
         }
         
         $projects = $this->projectRepository->getByUser($user);
-
+// dd($projects);
         /** @var \App\Models\Project $project */
         foreach ($projects as $project) {
-
+            $reports = $this->projectRepository->getReports($project);
+            $TotalReports->add($reports);
         }
 
-        return new JsonResponse();
+        return new JsonResponse($TotalReports->toArray(), Response::HTTP_OK);
     }
 }

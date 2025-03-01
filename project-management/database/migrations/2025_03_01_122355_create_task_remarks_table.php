@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('task_remarks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('task_id')->constrained()->onDelete('cascade');
+            $table->foreignId('task_id')->constrained('tasks')->onDelete('cascade');
             $table->text('remarks');
             $table->string('status');
             $table->date('date')->default(now()->toDateString());
