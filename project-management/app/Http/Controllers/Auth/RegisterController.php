@@ -33,6 +33,6 @@ class RegisterController extends Controller
 
         $token = JWTAuth::fromUser($user);
 
-        return new JsonResponse([$user->toArray(), $token], Response::HTTP_CREATED);
+        return response()->json(compact('user','token'), 201);
     }
 }

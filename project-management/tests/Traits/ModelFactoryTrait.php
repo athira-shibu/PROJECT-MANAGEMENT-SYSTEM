@@ -7,7 +7,7 @@ use App\Models\User;
 
 trait ModelFactoryTrait
 {
-    public function create(
+    public function createUser(
         ?string $name = null,
         ?string $email = null,
         ?string $password = null
