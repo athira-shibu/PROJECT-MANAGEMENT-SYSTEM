@@ -17,10 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('status')->default('pending');
+            $table->foreignId('project_id')->constrained('projects')->onDelete('cascade');
             $table->timestamps();
-
-            //foreign keys
-            $table->foreign('project_id')->references('id')->on('projects');
         });
     }
 

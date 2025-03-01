@@ -16,10 +16,8 @@ class  CreateProjectsTable extends Migration
         Schema::create(self::TABLE, static function (Blueprint $table): void {
             $table->id();
             $table->string('name');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();
-
-            //foreign keys
-            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

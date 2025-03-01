@@ -19,7 +19,7 @@ class UserRepositoryTest extends TestCase
 
         $repository = new UserRepository();
 
-        $result = $repository->create($createDto);
+        $repository->create($createDto);
 
         $this->assertDatabaseHas('users', [
             'name' => 'user 1',
