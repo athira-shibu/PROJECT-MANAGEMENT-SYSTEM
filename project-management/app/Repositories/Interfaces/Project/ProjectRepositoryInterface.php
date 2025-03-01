@@ -19,4 +19,6 @@ interface ProjectRepositoryInterface
     public function delete(Project $project): void;
 
     public function getByUser(User $user): Collection;
+
+    public function getReports(Project $project): Project;
 }

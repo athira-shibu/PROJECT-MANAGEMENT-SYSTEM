@@ -6,7 +6,9 @@ namespace Tests\Traits;
 use App\Constants\Task\TaskTypeEnum;
 use App\Models\Project;
 use App\Models\Task;
+use App\Models\TaskRemarks;
 use App\Models\User;
+use DateTime;
 
 trait ModelFactoryTrait
 {
@@ -59,5 +61,24 @@ trait ModelFactoryTrait
         $task->save();
 
         return $task;
+    }
+
+    public function createTaskRemarks(
+        ?Task $task = null,
+        ?TaskTypeEnum $status = null,
+        ?DateTime $data = null,
+        ?string $remarks = null
+    ): TaskRemarks {
+        $task = $task !== null ? $task : $this->createTask();
+
+        $taskRemarks = new TaskRemarks();
+
+        $taskRemarks->setAttribute('status', $status ?? 'pending');
+        $taskRemarks->setAttribute('remarks', $remarks ?? 'no remarks');
+        $taskRemarks->setAttribute('date', '12/09/23');
+
+        $taskRemarks->save();
+
+        return $taskRemarks;
     }
 }

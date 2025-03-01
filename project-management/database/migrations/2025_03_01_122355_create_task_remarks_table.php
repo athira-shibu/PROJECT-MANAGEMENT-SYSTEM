@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('task_remarks', function (Blueprint $table) {
             $table->id();
             $table->foreignId('task_id')->constrained()->onDelete('cascade');
-            $table->text('remark');
+            $table->text('remarks');
             $table->string('status');
             $table->date('date')->default(now()->toDateString());
             $table->timestamps();

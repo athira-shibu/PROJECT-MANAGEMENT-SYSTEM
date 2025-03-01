@@ -103,4 +103,24 @@ class ProjectRepositoryTest extends TestCase
 
         self::assertCount(2, $result);
     }
+
+    public function testGetReportIsSuccessful(): void
+    {
+        $user = $this->createUser();
+
+        $project1 = $this->createProject();
+        $task =$this->createTask(
+            $project1
+        );
+
+        $taskRemarks = $this->createTaskRemarks(
+            $task
+        );
+
+        $repository = new ProjectRepository();
+
+        $result = $repository->getReports($project1);
+dd($result);
+        $this->assertNotEmpty($result);
+    }
 }

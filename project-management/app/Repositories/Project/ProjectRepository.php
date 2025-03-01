@@ -51,4 +51,24 @@ final class ProjectRepository implements ProjectRepositoryInterface
             ->where('user_id', '=', $user->id)
             ->get();
     }
+
+    public function getReports(Project $project): Project
+    {
+        return (new Project())
+            ->select('projects.*')
+            ->join(
+                'tasks',
+                'tasks.project_id',
+                '=',
+                'projects.id'
+            )
+            ->join(
+                'task_remarks',
+                'task_remarks.task_id',
+                '=',
+                'tasks.id'
+            )
+            ->where('projects.id', '=', 'tasks.project_id')
+            ->first();
+    }
 }
