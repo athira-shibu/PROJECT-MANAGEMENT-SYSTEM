@@ -6,6 +6,7 @@ namespace App\Repositories\Interfaces\Project;
 use App\DataTransferObjects\Project\ProjectCreateDto;
 use App\Models\Project;
 use App\Models\User;
+use Illuminate\Support\Collection;
 
 interface ProjectRepositoryInterface
 {
@@ -16,4 +17,6 @@ interface ProjectRepositoryInterface
     public function findById(int $id): ?Project;
 
     public function delete(Project $project): void;
+
+    public function getByUser(User $user): Collection;
 }

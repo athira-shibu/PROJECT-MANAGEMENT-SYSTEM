@@ -7,6 +7,7 @@ use App\DataTransferObjects\Project\ProjectCreateDto;
 use App\Models\Project;
 use App\Models\User;
 use App\Repositories\Interfaces\Project\ProjectRepositoryInterface;
+use Illuminate\Support\Collection;
 
 final class ProjectRepository implements ProjectRepositoryInterface
 {
@@ -42,5 +43,12 @@ final class ProjectRepository implements ProjectRepositoryInterface
     public function delete(Project $project): void
     {
         $project->delete();
+    }
+
+    public function getByUser(User $user): Collection
+    {
+        return (new Project())
+            ->where('user_id', '=', $user->id)
+            ->get();
     }
 }

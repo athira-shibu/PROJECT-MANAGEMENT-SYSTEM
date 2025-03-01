@@ -79,4 +79,28 @@ class ProjectRepositoryTest extends TestCase
             'id' => $project->id
         ]);
     }
+
+    public function testFetchProjectsByUserIsSuccessful(): void
+    {
+        $user1 = $this->createUser();
+        $user2 = $this->createUser(
+            'user 2',
+            'user2@test.com'
+        );
+
+        $project1 = $this->createProject($user1);
+        $project2 = $this->createProject($user1);
+        $project3 = $this->createProject($user2);
+
+        $repository = new ProjectRepository();
+
+        $result = $repository->getByUser($user1);
+
+        $expected = [
+            $project1->toArray(),
+            $project2->toArray()
+        ];
+
+        self::assertCount(2, $result);
+    }
 }
