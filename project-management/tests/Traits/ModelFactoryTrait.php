@@ -3,7 +3,9 @@ declare(strict_types=1);
 
 namespace Tests\Traits;
 
+use App\Constants\Task\TaskTypeEnum;
 use App\Models\Project;
+use App\Models\Task;
 use App\Models\User;
 
 trait ModelFactoryTrait
@@ -38,5 +40,24 @@ trait ModelFactoryTrait
         $project->save();
 
         return $project;
+    }
+
+    public function createTask(
+        ?Project $project = null,
+        ?string $name = null,
+        ?TaskTypeEnum $status = null
+    ) : Task {
+        $task = new Task();
+
+        $project = $project !== null ? $project : $this->createProject();
+
+        $task->setAttribute('name', $name ?? 'task one');
+        $task->setAttribute('status', $status ?? 'pending');
+
+        $task->project()->associate($project);
+
+        $task->save();
+
+        return $task;
     }
 }

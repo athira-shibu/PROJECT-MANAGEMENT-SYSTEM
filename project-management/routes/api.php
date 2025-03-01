@@ -6,6 +6,8 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Project\ProjectCreateController;
 use App\Http\Controllers\Project\ProjectDeleteController;
 use App\Http\Controllers\Project\ProjectUpdateController;
+use App\Http\Controllers\Task\TaskCreateController;
+use App\Http\Controllers\Task\TaskUpdateController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -31,11 +33,14 @@ Route::group([
     'prefix' => 'projects',
     'as' => 'projects.',
     ], static function () {
-    Route::post('/', [ProjectCreateController::class, 'create']);
-    Route::put('/{id}', [ProjectUpdateController::class, 'update']);
-    Route::delete('/{id}', [ProjectDeleteController::class, 'delete']);
+        Route::post('/', [ProjectCreateController::class, 'create']);
+        Route::put('/{id}', [ProjectUpdateController::class, 'update']);
+        Route::delete('/{id}', [ProjectDeleteController::class, 'delete']);
     }
 );
+
+Route::post('/tasks', [TaskCreateController::class, 'create']);
+Route::put('/tasks/{id}', [TaskUpdateController::class, 'update']);
 
 Route::post('/register', [RegisterController::class, 'register']);
 Route::post('/login', [LoginController::class, 'login']);

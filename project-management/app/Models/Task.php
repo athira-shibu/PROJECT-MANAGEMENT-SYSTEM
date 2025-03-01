@@ -35,6 +35,7 @@ class Task extends Model
             'id' => $this->getAttribute('id'),
             'name' => $this->getAttribute('name'),
             'status' => $this->getAttribute('status'),
+            'remarks' => $this->getAttribute('remarks'),
             'project' => $this->getProject()->toArray(),
         ];
     }
