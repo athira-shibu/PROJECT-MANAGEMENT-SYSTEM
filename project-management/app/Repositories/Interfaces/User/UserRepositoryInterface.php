@@ -9,4 +9,6 @@ use App\Models\User;
 interface UserRepositoryInterface
 {
     public function create(UserCreateDto $createDto): User;
+
+    public function findById(int $id): ?User;
 }

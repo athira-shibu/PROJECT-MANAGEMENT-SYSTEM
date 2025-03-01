@@ -5,10 +5,14 @@ namespace Tests\Integration\Repositories\User;
 
 use App\DataTransferObjects\User\UserCreateDto;
 use App\Repositories\User\UserRepository;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use Tests\Traits\ModelFactoryTrait;
 
 class UserRepositoryTest extends TestCase
 {
+    use ModelFactoryTrait, RefreshDatabase;
+
     public function testUserCreationIsSuccessful(): void
     {
         $createDto = new UserCreateDto(
@@ -25,5 +29,19 @@ class UserRepositoryTest extends TestCase
             'name' => 'user 1',
             'email' => 'email@test.com',
         ]);
+    }
+
+    public function testFindOneByIdIsSuccess(): void
+    {
+        $user = $this->createUser();
+        $repository = new UserRepository();
+
+        $response = $repository->findById($user->id);
+
+        $expected = [
+            'id' => $user->id
+        ];
+
+        $this->assertEquals($expected['id'], $response->id);
     }
 }

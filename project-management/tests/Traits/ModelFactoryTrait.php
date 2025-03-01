@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Tests\Traits;
 
+use App\Models\Project;
 use App\Models\User;
 
 trait ModelFactoryTrait
@@ -21,5 +22,21 @@ trait ModelFactoryTrait
         $user->save();
 
         return $user;
+    }
+
+    public function createProject(
+        ?User $user = null,
+        ?string $name = null,
+    ): Project {
+        $project = new Project();
+        $user = $user !== null ? $user : $this->createUser();
+
+        $project->setAttribute('name', $name ?? 'project one');
+
+        $project->user()->associate($user);
+
+        $project->save();
+
+        return $project;
     }
 }

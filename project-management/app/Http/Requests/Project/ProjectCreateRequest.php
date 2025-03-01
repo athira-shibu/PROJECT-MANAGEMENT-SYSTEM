@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Http\Requests\Users;
+namespace App\Http\Requests\Project;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-final class UserCreateRequest extends FormRequest
+final class ProjectCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,8 +26,7 @@ final class UserCreateRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'user_id' => 'int|required',
         ];
     }
 }

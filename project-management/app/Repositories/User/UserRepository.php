@@ -21,4 +21,14 @@ final class UserRepository implements UserRepositoryInterface
 
         return $user;
     }
+
+    public function findById(int $id): ?User
+    {
+        /** @var User|null $user */
+        $user = (new User())
+            ->where('id', '=', $id)
+            ->first();
+
+        return $user;
+    }
 }
