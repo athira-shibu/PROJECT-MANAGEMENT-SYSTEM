@@ -1,0 +1,439 @@
+{
+	"info": {
+		"_postman_id": "0f198c32-b8f7-482d-80a7-c51f0632c1e0",
+		"name": "project management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "42739202"
+	},
+	"item": [
+		{
+			"name": "Project",
+			"item": [
+				{
+					"name": "create project",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "api/projects",
+							"host": [
+								"api"
+							],
+							"path": [
+								"projects"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "create project",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "api/projects",
+									"host": [
+										"api"
+									],
+									"path": [
+										"projects"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"name\": \"project two\",\n    \"user\": {\n        \"id\": 1,\n        \"name\": \"user a\",\n        \"email\": \"usera@test.com\",\n        \"email_verified_at\": null,\n        \"created_at\": \"2025-03-01T12:49:21.000000Z\",\n        \"updated_at\": \"2025-03-01T12:49:21.000000Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "get project",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "api/projects",
+							"host": [
+								"api"
+							],
+							"path": [
+								"projects"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get project",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "api/projects",
+									"host": [
+										"api"
+									],
+									"path": [
+										"projects"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "delete project",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"required|string|max:255\",\r\n    \"user_id\" : \"int|required\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "api/projects",
+							"host": [
+								"api"
+							],
+							"path": [
+								"projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update project",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"required|string|max:255\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "api/projects",
+							"host": [
+								"api"
+							],
+							"path": [
+								"projects"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "update project",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"required|string|max:255\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "api/projects",
+									"host": [
+										"api"
+									],
+									"path": [
+										"projects"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n   \"id\":1,\r\n   \"name\":\"modified\",\r\n   \"user\":{\r\n      \"id\":1,\r\n      \"name\":\"user a\",\r\n      \"email\":\"usera@test.com\",\r\n      \"email_verified_at\":null,\r\n      \"created_at\":\"2025-03-01T12:53:20.000000Z\",\r\n      \"updated_at\":\"2025-03-01T12:53:20.000000Z\"\r\n   }\r\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Task",
+			"item": [
+				{
+					"name": "create request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"required|string|max:255\",\r\n    \"status\" : \"string|required|pending|progress|completed\",\r\n    \"project_id\" : \"int|required\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "api/tasks",
+							"host": [
+								"api"
+							],
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "create request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"required|string|max:255\",\r\n    \"status\" : \"string|required|pending|progress|completed\",\r\n    \"project_id\" : \"int|required\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "api/tasks",
+									"host": [
+										"api"
+									],
+									"path": [
+										"tasks"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n   \"id\":1,\r\n   \"name\":\"task one\",\r\n   \"status\":\"completed\",\r\n   \"remarks\":null,\r\n   \"project\":{\r\n      \"id\":1,\r\n      \"name\":\"project one\",\r\n      \"user\":{\r\n         \"id\":1,\r\n         \"name\":\"user a\",\r\n         \"email\":\"usera@test.com\",\r\n         \"email_verified_at\":null,\r\n         \"created_at\":\"2025-03-01T12:56:32.000000Z\",\r\n         \"updated_at\":\"2025-03-01T12:56:32.000000Z\"\r\n      }\r\n   }\r\n}"
+						}
+					]
+				},
+				{
+					"name": "update request",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\" : \"string|required|pending|progress|completed\",\r\n    \"remarks\" : \"string|nullable\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "api/tasks/{id}",
+							"host": [
+								"api"
+							],
+							"path": [
+								"tasks",
+								"{id}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "update request",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"status\" : \"string|required|pending|progress|completed\",\r\n    \"remarks\" : \"string|nullable\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "api/tasks/{id}",
+									"host": [
+										"api"
+									],
+									"path": [
+										"tasks",
+										"{id}"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n   \"id\":1,\r\n   \"name\":\"task 3\",\r\n   \"status\":\"pending\",\r\n   \"remarks\":\"iam your remarks\",\r\n   \"project\":{\r\n      \"id\":2,\r\n      \"name\":\"project one\",\r\n      \"user\":{\r\n         \"id\":2,\r\n         \"name\":\"user a\",\r\n         \"email\":\"usera@test.com\",\r\n         \"email_verified_at\":null,\r\n         \"created_at\":\"2025-03-01T13:01:49.000000Z\",\r\n         \"updated_at\":\"2025-03-01T13:01:49.000000Z\"\r\n      }\r\n   }\r\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"required|string|max:255\",\r\n    \"email\" : \"required|string|email|max:255|unique:users\",\r\n    \"password\" : \"required|string|min:6|confirmed\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "api/register",
+							"host": [
+								"api"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"required|string|max:255\",\r\n    \"email\" : \"required|string|email|max:255|unique:users\",\r\n    \"password\" : \"required|string|min:6|confirmed\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n   \"user\":{\r\n      \"name\":\"user 2\",\r\n      \"email\":\"testmail@test.com\",\r\n      \"updated_at\":\"2025-03-01T13:05:38.000000Z\",\r\n      \"created_at\":\"2025-03-01T13:05:38.000000Z\",\r\n      \"id\":1\r\n   },\r\n   \"token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L2FwaS9yZWdpc3RlciIsImlhdCI6MTc0MDgzNDMzOCwiZXhwIjoxNzQwODM3OTM5LCJuYmYiOjE3NDA4MzQzMzksImp0aSI6IkIzUVNPb0N2TjF0aEVmTjciLCJzdWIiOiIxIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.pSH4NdAjsniSFpMv2TWi2RNJVkk7_t4t-umN7C3uwxY\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"required|string|email|max:255|unique:users\",\r\n    \"password\" : \"required|string|min:6|confirmed\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "api/login",
+							"host": [
+								"api"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "api/login",
+									"host": [
+										"api"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n   \"token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L2FwaS9sb2dpbiIsImlhdCI6MTc0MDgzNDU0MiwiZXhwIjoxNzQwODM4MTyLCJuYmYiOjE3NDA4MzQ1NDIsImp0aSI6IlZjSlliQmcyQmxtbVE5WkEiLCJzdWIiOiIxIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmN.II0m9ops_HddgJAoqo_jimSlHp4vxCydJUuZkVgXMzE\"\r\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
